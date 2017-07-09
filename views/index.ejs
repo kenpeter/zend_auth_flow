@@ -11,12 +11,13 @@
     <main>
       <div class="jumbotron">
         <table>
-          <% for(var i=0; i < allTickets.length; i++) { %>
-           <tr>
-             <td><%= allTickets[i].id %></td>
-             <td><%= allTickets[i].status %></td>
-             <td><%= allTickets[i].subject %></td>
-           </tr>
+          <% for(let i=0; i < allTickets.length; i++) { %>
+            <% let id = allTickets[i].id; %>
+            <tr>
+              <td><%= id %></td>
+              <td><%= allTickets[i].status %></td>
+              <td><a href="/tickets/<%= id %>"><%= allTickets[i].subject %></a></td>
+            </tr>
           <% } %>
         </table>
       </div>

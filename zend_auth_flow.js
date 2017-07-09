@@ -16,12 +16,13 @@ app.set('view engine', 'ejs');
 app.use(cookieParser());
 app.use(express.static(__dirname + '/public'));
 
+
 // create routes
 // remember to put async there
 app.get('/', async function(req, res) {
   // req for read, res for write cookie
   if(req.cookies.access_token != undefined) {
-    console.log('-- has cookie --');
+    console.log('-- access token --');
     const access_token = req.cookies.access_token;
 
     // get all tickets
@@ -32,7 +33,7 @@ app.get('/', async function(req, res) {
     res.render('index', {allTickets: allTickets});
   }
   else {
-    console.log('no cookie');
+    console.log('no access token');
 
     // 568769006d674d85b213d1c78e4c0c4484a51bbbff007e0f1e18fb3e6c1af77c
     const read_write = encodeURIComponent('read write');
@@ -45,6 +46,29 @@ app.get('/', async function(req, res) {
   }
 
 });
+
+app.get('/tickets/:id', async function(req, res) {
+  if(req.cookies.access_token != undefined) {
+    console.log('-- access token --');
+    const access_token = req.cookies.access_token;
+
+    let ticket_id = req.params.id;
+
+    // get all tickets
+    let singleTicket = await mylib.getSingleTicket(access_token, ticket_id);
+
+    //console.log('-- single ticket --');
+    //console.log(singleTicket);
+
+    res.render('single_ticket', {singleTicket: singleTicket});
+
+  }
+  else {
+    console.log('no access token');
+
+  }
+});
+
 
 app.get('/handle_user_decision', function(req, res) {
   // we have code or error
