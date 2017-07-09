@@ -1,23 +1,29 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <% include partials/head %>
-    </head>
+<html lang="en">
+  <head>
+    <% include partials/head %>
+  </head>
+  <body class="container">
+    <header>
+      <% include partials/header %>
+    </header>
 
-    <body>
-        <div class="container">
-            <header>
-                <% include  partials/header %>
-            </header>
+    <main>
+      <div class="jumbotron">
+        <table>
+          <% for(var i=0; i < allTickets.length; i++) { %>
+           <tr>
+             <td><%= allTickets[i].id %></td>
+             <td><%= allTickets[i].status %></td>
+             <td><%= allTickets[i].subject %></td>
+           </tr>
+          <% } %>
+        </table>
+      </div>
+    </main>
 
-            <main>
-                <h1>Welcome to my awesome page</h1>
-                <p>This is the best website ever created</p>
-            </main>
-
-            <footer>
-                <% include partials/footer %>
-            </footer>
-        </div>
-    </body>
+    <footer>
+      <% include partials/footer %>
+    </footer>
+  </body>
 </html>

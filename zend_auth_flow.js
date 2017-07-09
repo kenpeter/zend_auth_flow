@@ -2,25 +2,34 @@ const config = require('./config');
 const express = require('express');
 const app = express();
 const cookieParser = require('cookie-parser');
-const port = config.port;
 
+const port = config.port;
 const querystring = require('querystring');
 const my_zend_root_url = config.my_zend_root_url;
 const client_id = config.client_id;
-const redirect_uri = config.redirect_uri;
 
+const redirect_uri = config.redirect_uri;
 const request = require('request');
+const mylib = require('./lib/lib');
 
 app.set('view engine', 'ejs');
 app.use(cookieParser());
 app.use(express.static(__dirname + '/public'));
 
 // create routes
-app.get('/', function(req, res) {
+// remember to put async there
+app.get('/', async function(req, res) {
   // req for read, res for write cookie
   if(req.cookies.access_token != undefined) {
-    console.log('has cookie');
-    res.render('index');
+    console.log('-- has cookie --');
+    const access_token = req.cookies.access_token;
+
+    // get all tickets
+    let allTickets = await mylib.getAllTickets(access_token);
+
+    // when using in ejs, we don't do allTickets.allTickets
+    // we use allTickets straight away.
+    res.render('index', {allTickets: allTickets});
   }
   else {
     console.log('no cookie');
@@ -77,7 +86,7 @@ app.get('/handle_user_decision', function(req, res) {
       // 65205bd62aca324120539a87de1de26fd4241da9518d24098bb26b2c277388d4
       if (error) {
         console.log('-- error --');
-        console.log(err);
+        console.log(error);
       }
       else {
         const access_token = body.access_token;
@@ -85,10 +94,14 @@ app.get('/handle_user_decision', function(req, res) {
         if(access_token) {
           // remember token
           res.cookie('access_token', access_token);
-          res.send({set_success: true});
+          // res.send({set_success: true});
 
           console.log('-- access token --');
           console.log(access_token);
+
+          // rediect to listing ticket page, as we have access token
+          res.redirect('/');
+          console.log('-- redirect to home page --');
         }
         else {
 

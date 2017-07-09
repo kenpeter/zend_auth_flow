@@ -1,5 +1,7 @@
 ## Intro
 
+Tested on node 8.1.3. Node 8+ should be working.
+
 ## Authentication
 
 username: figo2478@gmail.com
@@ -12,3 +14,4 @@ https://stackoverflow.com/questions/17007997/how-to-access-the-get-parameters-af
 
 https://stackoverflow.com/questions/6432693/post-data-with-request-module-on-node-js
 https://support.zendesk.com/hc/en-us/articles/203663836-Using-OAuth-authentication-with-your-application
+https://scotch.io/tutorials/use-ejs-to-template-your-node-application
