@@ -1,22 +1,24 @@
+const config = require('./config');
 const express = require('express');
 const app = express();
 const cookieParser = require('cookie-parser');
-const port = 8015;
+const port = config.port;
 
 const querystring = require('querystring');
-const my_zend_root_url = 'https://kenpeter4444.zendesk.com';
-const client_id = "zend_auth_flow";
-const redirect_uri = "http://localhost:8080/handle_user_decision";
+const my_zend_root_url = config.my_zend_root_url;
+const client_id = config.client_id;
+const redirect_uri = config.redirect_uri;
+
+const request = require('request');
 
 app.set('view engine', 'ejs');
-
 app.use(cookieParser());
 app.use(express.static(__dirname + '/public'));
 
 // create routes
 app.get('/', function(req, res) {
   // req for read, res for write cookie
-  if(req.cookies.owat != undefined) {
+  if(req.cookies.access_token != undefined) {
     console.log('has cookie');
     res.render('index');
   }
@@ -26,6 +28,9 @@ app.get('/', function(req, res) {
     // 568769006d674d85b213d1c78e4c0c4484a51bbbff007e0f1e18fb3e6c1af77c
     const read_write = encodeURIComponent('read write');
     // we don't speicify redirect uri here, as we already have it in zendesk interface
+    // go to get new token page
+    // if we already ask new token before and token still valid, we will go straight to redirect
+    // otherwise it will go to authorization enable page
     const auth_new = `${my_zend_root_url}/oauth/authorizations/new?response_type=code&client_id=${client_id}&scope=${read_write}`;
     res.redirect(auth_new);
   }
@@ -35,23 +40,74 @@ app.get('/', function(req, res) {
 app.get('/handle_user_decision', function(req, res) {
   // we have code or error
   if(req.query.code != undefined) {
-    console.log(req.query.code);
-    res.cookie('owat', req.query.code);
+    const code = req.query.code;
+
+    // the access code is different each time
+    // access token can be the same in that amount of time.
+    console.log('-- access code --');
+    console.log(code);
+
+    const get_token_url = config.my_zend_root_url + "/oauth/tokens";
+
     // Need to post and get token
+    const jsonDataObj = {
+      "grant_type": "authorization_code",
+      "code": code,
+      "client_id": config.client_id,
+      "client_secret": config.client_secret,
+      "redirect_uri": config.redirect_uri,
+      "scope": "read"
+    };
+
+    request.post({
+      url: get_token_url,
+      body: jsonDataObj,
+      json: true
+    }, function(error, response, body) {
+      /*
+      console.log('--err--');
+      console.log(error);
+      console.log('--res--')
+      console.log(response);
+      console.log('--body--');
+      console.log(body);
+      */
+
+      // access token
+      // 65205bd62aca324120539a87de1de26fd4241da9518d24098bb26b2c277388d4
+      if (error) {
+        console.log('-- error --');
+        console.log(err);
+      }
+      else {
+        const access_token = body.access_token;
+
+        if(access_token) {
+          // remember token
+          res.cookie('access_token', access_token);
+          res.send({set_success: true});
+
+          console.log('-- access token --');
+          console.log(access_token);
+        }
+        else {
+
+        }
+      }
+    });
 
   }
   else {
     //
+    console.log('has no req.query.code');
   }
-
-  res.send({set_success: true});
-
 });
 
 
 
 app.get('/clean_cookie', function(req, res) {
-  res.clearCookie('owat');
+  console.log('-- clean access_token in cookie --');
+  res.clearCookie('access_token');
   res.send({clean_success: true});
 });
 
