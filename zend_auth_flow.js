@@ -20,6 +20,8 @@ app.use(express.static(__dirname + '/public'));
 // create routes
 // remember to put async there
 app.get('/', async function(req, res) {
+  //
+
   // req for read, res for write cookie
   if(req.cookies.access_token != undefined) {
     console.log('-- has access token --');
@@ -36,22 +38,23 @@ app.get('/', async function(req, res) {
     }
     console.log("curr page: " + page);
 
-    /*
+    // note, if you define a var inside try catch block, it won't be visible to the rest.
+    let tickets = '';
     try {
-      let tickets = await mylib.getAllTickets(access_token);
-      //let tickets = await mylib.getPagedTickets(access_token, config.per_page, page);
+      tickets = await mylib.getPagedTickets(access_token, config.per_page, page);
     }
     catch(e) {
-      console.log("-- catch error --");
+      console.log('-- catch error --');
       console.log(e);
 
-      console.log('-- clean token --');
+      // clean token
       res.clearCookie('access_token');
       res.redirect('/');
+      // need to stop this route immediately.
+      return;
     }
-    */
 
-    let tickets = await mylib.getPagedTickets(access_token, config.per_page, page);
+    // We don't do a try catch block here, as the try catch block already done the job.
     // need to get total page each time, as we don't know whether someone will add more tickets for you.
     let total_ticket_num = await mylib.getTotalTicketNum(access_token);
 
@@ -60,7 +63,7 @@ app.get('/', async function(req, res) {
     let total_page = Math.ceil(total_ticket_num / config.per_page);
     res.render('index', {
       tickets: tickets,
-      total_ticket_num: total_ticket_num, 
+      total_ticket_num: total_ticket_num,
       per_page: config.per_page,
       page: page,
       total_page: total_page
