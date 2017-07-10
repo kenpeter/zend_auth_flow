@@ -55,7 +55,7 @@ app.get('/', async function(req, res) {
 
     // when using in ejs, we don't do allTickets.allTickets
     // we use allTickets straight away.
-    res.render('index', {tickets: tickets});
+    res.render('index', {tickets: tickets, page: page});
   }
   else {
     console.log('no access token');

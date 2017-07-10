@@ -10,6 +10,24 @@
 
     <main>
       <div class="jumbotron">
+        <%
+          let prev_page = parseInt(page) - 1;
+          if(prev_page <= 0) {
+            prev_page = 1;
+          }
+          else {
+
+          }
+        %>
+        <%
+          let next_page = parseInt(page) + 1;
+          if(next_page >= 1000) {
+            next_page = 1000;
+          }
+          else {
+
+          }
+        %>
         <table>
           <% for(let i=0; i < tickets.length; i++) { %>
             <% let id = tickets[i].id; %>
@@ -21,7 +39,7 @@
           <% } %>
         </table>
 
-        <p><a href="/?page=1">Prev</a> | <a href="/?page=3">next</a></p>
+        <p><a href=<%=`/?page=${prev_page}`%> >Prev</a> | <a href=<%=`/?page=${next_page}`%> >next</a></p>
       </div>
     </main>
 
