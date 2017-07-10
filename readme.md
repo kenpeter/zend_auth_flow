@@ -25,6 +25,11 @@ username: figo2478@gmail.com
 password: Kenpeter4444!
 
 
+
+## Test
+mocha 
+
+## Ref
 https://help.zendesk.com/hc/en-us/articles/229488968
 https://www.codementor.io/noddy/cookie-management-in-express-js-du107rmna
 https://stackoverflow.com/questions/19035373/how-do-i-redirect-in-expressjs-while-passing-some-context
@@ -33,3 +38,4 @@ https://stackoverflow.com/questions/17007997/how-to-access-the-get-parameters-af
 https://stackoverflow.com/questions/6432693/post-data-with-request-module-on-node-js
 https://support.zendesk.com/hc/en-us/articles/203663836-Using-OAuth-authentication-with-your-application
 https://scotch.io/tutorials/use-ejs-to-template-your-node-application
+https://glebbahmutov.com/blog/how-to-correctly-unit-test-express-server/

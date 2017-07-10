@@ -186,5 +186,8 @@ app.get('/clean_cookie', function(req, res) {
 
 
 // tell the application to listen on port 3000
-app.listen(port);
-console.log(`listening to port: ${port}`);
+const server = app.listen(port, function(){
+  console.log(`listening to port: ${port}`);
+});
+
+module.exports = server;
