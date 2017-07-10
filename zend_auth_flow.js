@@ -12,6 +12,8 @@ const redirect_uri = config.redirect_uri;
 const request = require('request');
 const mylib = require('./lib/lib');
 
+const cleanCookieRoute = require('./routes/clean_cookie_route');
+
 app.set('view engine', 'ejs');
 app.use(cookieParser());
 app.use(express.static(__dirname + '/public'));
@@ -133,15 +135,6 @@ app.get('/handle_user_decision', function(req, res) {
       body: jsonDataObj,
       json: true
     }, function(error, response, body) {
-      /*
-      console.log('--err--');
-      console.log(error);
-      console.log('--res--')
-      console.log(response);
-      console.log('--body--');
-      console.log(body);
-      */
-
       // access token
       // 65205bd62aca324120539a87de1de26fd4241da9518d24098bb26b2c277388d4
       if (error) {
@@ -178,11 +171,15 @@ app.get('/handle_user_decision', function(req, res) {
 
 
 
+/*
 app.get('/clean_cookie', function(req, res) {
   console.log('-- clean access_token in cookie --');
   res.clearCookie('access_token');
   res.send({clean_token: true});
 });
+*/
+
+cleanCookieRoute(app);
 
 
 // tell the application to listen on port 3000
