@@ -170,15 +170,7 @@ app.get('/handle_user_decision', function(req, res) {
 });
 
 
-
-/*
-app.get('/clean_cookie', function(req, res) {
-  console.log('-- clean access_token in cookie --');
-  res.clearCookie('access_token');
-  res.send({clean_token: true});
-});
-*/
-
+// /clean_cookie
 cleanCookieRoute(app);
 
 
