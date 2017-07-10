@@ -22,15 +22,24 @@ app.use(express.static(__dirname + '/public'));
 app.get('/', async function(req, res) {
   // req for read, res for write cookie
   if(req.cookies.access_token != undefined) {
-    console.log('-- access token --');
+    console.log('-- has access token --');
     const access_token = req.cookies.access_token;
 
+    // check
+    let page = req.query.page;
+    if(page) {
+
+    }
+    else {
+
+    }
+
     // get all tickets
-    let allTickets = await mylib.getAllTickets(access_token);
+    let tickets = await mylib.getPagedTickets(access_token, config.per_page, page);
 
     // when using in ejs, we don't do allTickets.allTickets
     // we use allTickets straight away.
-    res.render('index', {allTickets: allTickets});
+    res.render('index', {tickets: tickets});
   }
   else {
     console.log('no access token');
