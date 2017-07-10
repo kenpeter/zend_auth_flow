@@ -172,7 +172,6 @@ app.get('/handle_user_decision', function(req, res) {
         }
       }
     });
-
   }
   else {
     //
