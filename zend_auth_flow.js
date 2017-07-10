@@ -92,11 +92,22 @@ app.get('/tickets/:id', async function(req, res) {
 
     let ticket_id = req.params.id;
 
-    // get all tickets
-    let singleTicket = await mylib.getSingleTicket(access_token, ticket_id);
+    let singleTicket = '';
 
-    //console.log('-- single ticket --');
-    //console.log(singleTicket);
+    try {
+      singleTicket = await mylib.getSingleTicket(access_token, ticket_id);
+    }
+    catch(e) {
+      console.log('-- catch error --');
+      console.log(e);
+
+      // clean token
+      res.clearCookie('access_token');
+      res.redirect('/');
+      // need to stop this route immediately.
+      return;
+    }
+
 
     res.render('single_ticket', {singleTicket: singleTicket});
 

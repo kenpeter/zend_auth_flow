@@ -59,26 +59,4 @@ describe('GET /ping', function () {
       });
   });
 
-
-  /*
-  it('should respond with 200 and a user object', function (done) {
-    var userData = {
-      username: 'nodejs'
-    };
-
-    getUserStub.returns(userData);
-
-    request
-      .get('/users/nodejs')
-      .expect('Content-Type', /json/)
-      .expect(200, function (err, res) {
-        expect(res.body).to.deep.equal({
-          status: 'ok',
-          data: userData
-        });
-        done();
-      });
-  });
-  */
-
 });
