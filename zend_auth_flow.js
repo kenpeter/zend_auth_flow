@@ -13,6 +13,7 @@ const request = require('request');
 const mylib = require('./lib/lib');
 
 const cleanCookieRoute = require('./routes/clean_cookie_route');
+const handleUserDecisionRoute = require('./routes/handle_user_decision_route');
 
 app.set('view engine', 'ejs');
 app.use(cookieParser());
@@ -118,7 +119,7 @@ app.get('/tickets/:id', async function(req, res) {
   }
 });
 
-
+/*
 app.get('/handle_user_decision', function(req, res) {
   // we have code or error
   if(req.query.code != undefined) {
@@ -178,7 +179,10 @@ app.get('/handle_user_decision', function(req, res) {
     console.log('has no req.query.code');
   }
 });
+*/
 
+// /handle_user_decision
+handleUserDecisionRoute(app);
 
 // /clean_cookie
 cleanCookieRoute(app);
