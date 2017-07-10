@@ -31,10 +31,26 @@ app.get('/', async function(req, res) {
 
     }
     else {
-
+      // default first page
+      page = 1;
     }
+    console.log("curr page: " + page);
 
-    // get all tickets
+    /*
+    try {
+      let tickets = await mylib.getAllTickets(access_token);
+      //let tickets = await mylib.getPagedTickets(access_token, config.per_page, page);
+    }
+    catch(e) {
+      console.log("-- catch error --");
+      console.log(e);
+
+      console.log('-- clean token --');
+      res.clearCookie('access_token');
+      res.redirect('/');
+    }
+    */
+
     let tickets = await mylib.getPagedTickets(access_token, config.per_page, page);
 
     // when using in ejs, we don't do allTickets.allTickets
@@ -154,7 +170,7 @@ app.get('/handle_user_decision', function(req, res) {
 app.get('/clean_cookie', function(req, res) {
   console.log('-- clean access_token in cookie --');
   res.clearCookie('access_token');
-  res.send({clean_success: true});
+  res.send({clean_token: true});
 });
 
 
