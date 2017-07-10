@@ -40,7 +40,10 @@
           <% } %>
         </table>
 
-        <p><a href=<%=`/?page=${prev_page}`%> >Prev</a> | <a href=<%=`/?page=${next_page}`%> >next</a></p>
+        <p>
+          <span><%= `${total_ticket_num} tickets in total` %>, <%= `${per_page} in this page` %></span>
+          <a href=<%=`/?page=${prev_page}`%> >Prev</a> | <a href=<%=`/?page=${next_page}`%> >next</a>
+        </p>
       </div>
     </main>
 

@@ -58,7 +58,13 @@ app.get('/', async function(req, res) {
     // when using in ejs, we don't do allTickets.allTickets
     // we use allTickets straight away.
     let total_page = Math.ceil(total_ticket_num / config.per_page);
-    res.render('index', {tickets: tickets, page: page, total_page: total_page});
+    res.render('index', {
+      tickets: tickets,
+      total_ticket_num: total_ticket_num, 
+      per_page: config.per_page,
+      page: page,
+      total_page: total_page
+    });
   }
   else {
     console.log('no access token');
