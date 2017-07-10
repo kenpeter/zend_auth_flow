@@ -52,15 +52,17 @@ app.get('/', async function(req, res) {
     */
 
     let tickets = await mylib.getPagedTickets(access_token, config.per_page, page);
+    // need to get total page each time, as we don't know whether someone will add more tickets for you.
+    let total_ticket_num = await mylib.getTotalTicketNum(access_token);
 
     // when using in ejs, we don't do allTickets.allTickets
     // we use allTickets straight away.
-    res.render('index', {tickets: tickets, page: page});
+    let total_page = Math.ceil(total_ticket_num / config.per_page);
+    res.render('index', {tickets: tickets, page: page, total_page: total_page});
   }
   else {
     console.log('no access token');
-
-    // 568769006d674d85b213d1c78e4c0c4484a51bbbff007e0f1e18fb3e6c1af77c
+    //
     const read_write = encodeURIComponent('read write');
     // we don't speicify redirect uri here, as we already have it in zendesk interface
     // go to get new token page

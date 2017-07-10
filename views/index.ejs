@@ -21,8 +21,9 @@
         %>
         <%
           let next_page = parseInt(page) + 1;
-          if(next_page >= 1000) {
-            next_page = 1000;
+
+          if(next_page >= total_page) {
+            next_page = total_page;
           }
           else {
 
