@@ -69,7 +69,7 @@ load ```http://localhost:8015``` in browser. Why port 8015? Because I have other
 
 ## Authentication
 
-When launching the site: http://localhost:8015, sometimes the token is already expired, you will be
+When launching the site: http://localhost:8015, sometimes the token is already expired, you will
 be redirected to a page like the following url:
 
 https://kenpeter4444.zendesk.com/access/unauthenticated?client_id=zend_auth_flow&return_to=https%3A%2F%2Fkenpeter4444.zendesk.com%2Foauth%2Fauthorizations%2Fnew%3Fresponse_type%3Dcode%26client_id%3Dzend_auth_flow%26scope%3Dread%2520write
@@ -81,6 +81,10 @@ Use the following dummy detail to login:
 ```username: figo2478@gmail.com```
 
 ```password: Kenpeter4444!```
+
+
+## Routes
+
 
 
 ## Test

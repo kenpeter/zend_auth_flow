@@ -21,11 +21,11 @@ app.use(express.static(__dirname + '/public'));
 
 
 // create routes
-// remember to put async there
+// remember to put async here
 app.get('/', async function(req, res) {
-  // req for read, res for write cookie
+  // req for read cookie, res for write cookie
   if(req.cookies.access_token != undefined) {
-    console.log('-- has access token --');
+    console.log('-- at home page and has access token --');
     const access_token = req.cookies.access_token;
 
     // check
@@ -55,7 +55,7 @@ app.get('/', async function(req, res) {
       return;
     }
 
-    // We don't do a try catch block here, as the try catch block already done the job.
+    // We don't do a try catch block here, as the try catch block above already done the job.
     // need to get total page each time, as we don't know whether someone will add more tickets for you.
     let total_ticket_num = await mylib.getTotalTicketNum(access_token);
 
@@ -86,12 +86,15 @@ app.get('/', async function(req, res) {
 
 app.get('/tickets/:id', async function(req, res) {
   if(req.cookies.access_token != undefined) {
-    console.log('-- access token --');
+    console.log('-- get single ticket --');
     const access_token = req.cookies.access_token;
 
     let ticket_id = req.params.id;
 
     let singleTicket = '';
+
+    //test
+    let newToken = '';
 
     try {
       singleTicket = await mylib.getSingleTicket(access_token, ticket_id);
@@ -119,7 +122,7 @@ app.get('/tickets/:id', async function(req, res) {
 // /handle_user_decision
 handleUserDecisionRoute(app);
 
-// /clean_cookie
+// /clean_cookie, it is a utility to clean cookie
 cleanCookieRoute(app);
 
 
