@@ -5,22 +5,30 @@ Tested on node 8.1.3. Node 8+ should be working.
 ## Pre-install
 
 ### Install nvm
-I personally use nvm to run / switch multiple versions of nodejs. You can find the instruction here:  https://github.com/creationix/nvm
+I personally use nvm to switch between versions of nodejs. You can find detail instruction here:  https://github.com/creationix/nvm
 
 Install nvm
 ~~~~
 git clone https://github.com/creationix/nvm.git .nvm
 ~~~~
 
-Add the following to ~~~~ ~/.bashrc, ~/.profile, or ~/.zshrc ~~~~
+Add the following
 ~~~~
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh" # This loads nvm
 ~~~~
 
+to your bashrc, profile or zshrc
+~/.bashrc or
+~/.profile or
+~/.zshrc
+~~~~
+
+
+~~~~
 Install the latest node
 ~~~~
-nvm install node
+nvm install 8.1.3
 ~~~~
 
 Check your node version, it should be someting like version 8+
