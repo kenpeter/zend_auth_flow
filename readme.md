@@ -7,7 +7,7 @@ Tested on node 8.1.3. Node 8+ should be working.
 ### Install nvm
 I personally use nvm to switch between versions of nodejs. You can find detail instruction here:  https://github.com/creationix/nvm
 
-Install nvm
+Clone the nvm to your home directory.
 ~~~~
 git clone https://github.com/creationix/nvm.git .nvm
 ~~~~
@@ -18,7 +18,7 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh" # This loads nvm
 ~~~~
 
-to your ~/.bashrc or ~/.profile or ~/.zshrc
+to your ```~/.bashrc``` or ```~/.profile``` or ```~/.zshrc```
 
 
 Install a particular version of node
