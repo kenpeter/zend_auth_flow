@@ -10,6 +10,8 @@
 
     <main>
       <div class="jumbotron">
+        <h3>Mobile ticket viewer</h3>
+
         <%
           let prev_page = parseInt(page) - 1;
           if(prev_page <= 0) {
@@ -30,6 +32,11 @@
           }
         %>
         <table class="table table-striped">
+          <tr>
+            <th>ID</th>
+            <th>Status</th>
+            <th>Subject</th>
+          </tr>
           <% for(let i=0; i < tickets.length; i++) { %>
             <% let id = tickets[i].id; %>
             <tr>
@@ -41,7 +48,7 @@
         </table>
 
         <p>
-          <span><%= `${total_ticket_num} tickets in total` %>, <%= `${per_page} in this page` %></span>
+          <span><%= `${total_ticket_num} tickets in total` %>, <%= `${per_page} in this page` %></span><br/>
           <a href=<%=`/?page=${prev_page}`%> >Prev</a> | <a href=<%=`/?page=${next_page}`%> >next</a>
         </p>
       </div>
