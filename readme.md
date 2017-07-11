@@ -9,6 +9,9 @@ I personally use nvm to switch between versions of nodejs. You can find detail i
 
 Clone the nvm to your home directory.
 ~~~~
+cd ~
+~~~~
+~~~~
 git clone https://github.com/creationix/nvm.git .nvm
 ~~~~
 
