@@ -31,26 +31,28 @@ Check your node version, it should be something like version 8.1.3
 node -v
 ~~~~
 
-After the actionsabove. npm should be installed as well.
+After the actions above. npm should be installed as well.
 
 
 If you want to use yarn, like I do. Head over to https://yarnpkg.com/lang/en/docs/install/
 
-## Install
-
+## Install necessary packages
 ~~~~
 yarn install
 ~~~~
-
 or
-
 ~~~~
 npm install
 ~~~~
 
 ## Run
-node zend_auth_flow.js, then load http://localhost:8015
-You can also run nodemon zend_auth_flow.js, any change on source code will be reflected straight, no need to restart server.
+~~~~
+node zend_auth_flow.js
+~~~~
+
+then
+load ```http://localhost:8015``` in browser
+
 
 
 ## Authentication
