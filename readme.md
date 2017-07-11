@@ -81,6 +81,8 @@ https://support.zendesk.com/hc/en-us/articles/203663836-Using-OAuth-authenticati
 https://scotch.io/tutorials/use-ejs-to-template-your-node-application
 https://glebbahmutov.com/blog/how-to-correctly-unit-test-express-server/
 
+https://developer.zendesk.com/rest_api/docs/core/oauth_tokens
+
 
 ## Questions to ask
 
