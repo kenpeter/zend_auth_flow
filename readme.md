@@ -69,21 +69,22 @@ load ```http://localhost:8015``` in browser. Why port 8015? Because I have other
 
 ## Authentication
 
-When launching the site: http://localhost:8015, you may
-be redirected to a page where you input your username and password for zendesk account. e.g.
+When launching the site: http://localhost:8015, sometimes the token is already expired, you will be
+be redirected to a page like the following url:
 
 https://kenpeter4444.zendesk.com/access/unauthenticated?client_id=zend_auth_flow&return_to=https%3A%2F%2Fkenpeter4444.zendesk.com%2Foauth%2Fauthorizations%2Fnew%3Fresponse_type%3Dcode%26client_id%3Dzend_auth_flow%26scope%3Dread%2520write
 
-Use this detail to login:
-username: figo2478@gmail.com
-password: Kenpeter4444!
+where you have change to input your username and passowrd.
 
+Use the following dummy detail to login:
+```username: figo2478@gmail.com```
+```password: Kenpeter4444!```
 
 
 ## Test
-This little app must be running in order to be tested.
+This little app must be running before, we run all the tests.
 
-In this project directory, ~~~ yarn start ~~~ or ~~~~ npm start ~~~~ or ~~~~ node zend_auth_flow.js ~~~~to launch the app. The server is listening to port 8015. So you can access this little app via http://localhost:8015
+In this project directory, ```node zend_auth_flow.js``` to launch the app. The server is listening to port 8015. So you can access this little app via http://localhost:8015
 
 
 Now run the test: ~~~ yarn test ~~~~ or ~~~~ npm test ~~~~
