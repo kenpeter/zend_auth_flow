@@ -82,33 +82,22 @@ Use the following dummy detail to login:
 
 
 ## Test
-This little app must be running before, we run all the tests.
+This little app must be running first, then we run all the tests.
 
 In this project directory, ```node zend_auth_flow.js``` to launch the app. The server is listening to port 8015. So you can access this little app via http://localhost:8015
 
 
-Now run the test: ~~~ yarn test ~~~~ or ~~~~ npm test ~~~~
+Now run the test: ```yarn test``` or ```npm test```
 
 ## Ref
-https://help.zendesk.com/hc/en-us/articles/229488968
-https://www.codementor.io/noddy/cookie-management-in-express-js-du107rmna
-https://stackoverflow.com/questions/19035373/how-do-i-redirect-in-expressjs-while-passing-some-context
-https://stackoverflow.com/questions/17007997/how-to-access-the-get-parameters-after-in-express
+* https://help.zendesk.com/hc/en-us/articles/229488968
+* https://www.codementor.io/noddy/cookie-management-in-express-js-du107rmna
+* https://stackoverflow.com/questions/19035373/how-do-i-redirect-in-expressjs-while-passing-some-context
+* https://stackoverflow.com/questions/17007997/how-to-access-the-get-parameters-after-in-express
 
-https://stackoverflow.com/questions/6432693/post-data-with-request-module-on-node-js
-https://support.zendesk.com/hc/en-us/articles/203663836-Using-OAuth-authentication-with-your-application
-https://scotch.io/tutorials/use-ejs-to-template-your-node-application
-https://glebbahmutov.com/blog/how-to-correctly-unit-test-express-server/
+* https://stackoverflow.com/questions/6432693/post-data-with-request-module-on-node-js
+* https://support.zendesk.com/hc/en-us/articles/203663836-Using-OAuth-authentication-with-your-application
+* https://scotch.io/tutorials/use-ejs-to-template-your-node-application
+* https://glebbahmutov.com/blog/how-to-correctly-unit-test-express-server/
 
-https://developer.zendesk.com/rest_api/docs/core/oauth_tokens
-
-
-## Questions to ask
-
-*
-Do we use oauth client. e.g. register my app to the api then use and always use that single username password to connect to api.
-
-*
-If a user declines oauth client authentication, click the cancel button never do anything.
-
-https://kenpeter4444.zendesk.com/access/unauthenticated?client_id=zend_auth_flow&return_to=https%3A%2F%2Fkenpeter4444.zendesk.com%2Foauth%2Fauthorizations%2Fnew%3Fresponse_type%3Dcode%26client_id%3Dzend_auth_flow%26scope%3Dread%2520write
+* https://developer.zendesk.com/rest_api/docs/core/oauth_tokens
