@@ -74,7 +74,7 @@ be redirected to a page like the following url:
 
 https://kenpeter4444.zendesk.com/access/unauthenticated?client_id=zend_auth_flow&return_to=https%3A%2F%2Fkenpeter4444.zendesk.com%2Foauth%2Fauthorizations%2Fnew%3Fresponse_type%3Dcode%26client_id%3Dzend_auth_flow%26scope%3Dread%2520write
 
-where you have change to input your username and passowrd.
+where you have a chance to input your username and passowrd.
 
 Use the following dummy detail to login:
 
