@@ -1,6 +1,5 @@
 ## Intro
-
-Tested on node 8.1.3. Node 8+ should be working.
+A little app uses some of the Zendesk API. Tested on node 8.1.3. It should be working on node 8+
 
 ## Pre-install
 
