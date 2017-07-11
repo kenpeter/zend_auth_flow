@@ -23,8 +23,6 @@ app.use(express.static(__dirname + '/public'));
 // create routes
 // remember to put async there
 app.get('/', async function(req, res) {
-  //
-
   // req for read, res for write cookie
   if(req.cookies.access_token != undefined) {
     console.log('-- has access token --');
@@ -108,7 +106,6 @@ app.get('/tickets/:id', async function(req, res) {
       // need to stop this route immediately.
       return;
     }
-
 
     res.render('single_ticket', {singleTicket: singleTicket});
 

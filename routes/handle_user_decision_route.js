@@ -1,5 +1,8 @@
+//
 const express = require('express');
+//
 const request = require('request');
+//
 const config = require('../config');
 
 // receive express app
@@ -10,9 +13,9 @@ module.exports = function (app) {
   // now define 1st level
   app.use('/handle_user_decision', route);
 
-  // /clean_cookie/
+  // /handle_user_decision_route
   route.get('/', function (req, res) {
-    // we have code or error
+    // the code coming back from user decision
     if(req.query.code != undefined) {
       const code = req.query.code;
 
@@ -56,6 +59,7 @@ module.exports = function (app) {
             // rediect to listing ticket page, as we have access token
             res.redirect('/');
             console.log('-- redirect to home page --');
+            return;
           }
           else {
             // no access token
@@ -64,10 +68,9 @@ module.exports = function (app) {
       });
     }
     else {
-      //
-      console.log('has no req.query.code');
+      const err_msg = 'Has no req.query.code. User declines.';
+      console.log(err_msg);
+      res.render('error_page', {err_msg: err_msg});
     }
-
-
   });
 };
