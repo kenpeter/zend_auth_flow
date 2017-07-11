@@ -34,7 +34,7 @@ Check your node version, it should be something like version 8.1.3
 node -v
 ~~~~
 
-After the actions above. npm should be installed as well.
+After the actions above. ```npm``` should be installed as well.
 
 
 If you want to use yarn, like I do. Head over to https://yarnpkg.com/lang/en/docs/install/
