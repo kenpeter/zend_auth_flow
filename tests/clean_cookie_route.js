@@ -16,7 +16,7 @@ var expect = require('chai').expect;
 var express = require('express');
 
 // ping url
-describe('Test cleanCookieRoute', function () {
+describe('Test cleanCookieRoute: ', function () {
   var app;
   var request
   var route;
