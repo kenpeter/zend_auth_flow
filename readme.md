@@ -34,10 +34,15 @@ Check your node version, it should be something like version 8.1.3
 node -v
 ~~~~
 
-After the actions above. ```npm``` (what is [npm](https://docs.npmjs.com/getting-started/what-is-npm)?)should be installed as well.
-
+After the actions above. ```npm``` (what is [npm](https://docs.npmjs.com/getting-started/what-is-npm)?) should be installed as well.
 
 If you want to use yarn, like I do. Head over to https://yarnpkg.com/lang/en/docs/install/
+
+Install yarn on mac
+https://yarnpkg.com/lang/en/docs/install/#mac-tab
+
+Install yarn on linux
+https://yarnpkg.com/lang/en/docs/install/#linux-tab
 
 ## Install necessary packages
 ~~~~
