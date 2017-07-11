@@ -64,7 +64,7 @@ node zend_auth_flow.js
 ~~~~
 
 then
-load ```http://localhost:8015``` in browser. Why port 8015, because I have other apps running from port 8000.
+load ```http://localhost:8015``` in browser. Why port 8015? Because I have other apps running from port 8000.
 
 
 
