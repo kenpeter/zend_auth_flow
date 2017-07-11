@@ -18,25 +18,21 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh" # This loads nvm
 ~~~~
 
-to your bashrc, profile or zshrc
-~/.bashrc or
-~/.profile or
-~/.zshrc
-~~~~
+to your ~/.bashrc or ~/.profile or ~/.zshrc
 
 
-~~~~
-Install the latest node
+Install a particular version of node
 ~~~~
 nvm install 8.1.3
 ~~~~
 
-Check your node version, it should be someting like version 8+
+Check your node version, it should be something like version 8.1.3
 ~~~~
 node -v
 ~~~~
 
-After this npm should be installed as well.
+After the actionsabove. npm should be installed as well.
+
 
 If you want to use yarn, like I do. Head over to https://yarnpkg.com/lang/en/docs/install/
 
