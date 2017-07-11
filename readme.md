@@ -35,7 +35,7 @@ node -v
 
 After the actions above. ```npm``` (what is [npm](https://docs.npmjs.com/getting-started/what-is-npm)?) should be installed as well.
 
-### Install yarn (optional)
+### Install yarn (optional, but recommend)
 If you want to use yarn, like I do. Head over to https://yarnpkg.com/lang/en/docs/install/
 
 Install yarn on mac
