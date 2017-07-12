@@ -31,7 +31,7 @@ handleUserDecisionRoute(app);
 // /clean_cookie, it is a utility to clean cookie
 cleanCookieRoute(app);
 
-// tell the application to listen on port 3000
+// liten to a port
 const server = app.listen(port, () => {
   console.log(`listening to port: ${port}`);
 });
