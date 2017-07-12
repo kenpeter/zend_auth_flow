@@ -85,42 +85,6 @@ app.get('/', async function(req, res) {
 
 });
 
-/*
-app.get('/tickets/:id', async function(req, res) {
-  if(req.cookies.access_token != undefined) {
-    console.log('-- get single ticket --');
-    const access_token = req.cookies.access_token;
-
-    let ticket_id = req.params.id;
-
-    let singleTicket = '';
-
-    //test
-    let newToken = '';
-
-    try {
-      singleTicket = await mylib.getSingleTicket(access_token, ticket_id);
-    }
-    catch(e) {
-      console.log('-- catch error --');
-      console.log(e);
-
-      // clean token
-      res.clearCookie('access_token');
-      res.redirect('/');
-      // need to stop this route immediately.
-      return;
-    }
-
-    res.render('single_ticket', {singleTicket: singleTicket});
-
-  }
-  else {
-    console.log('no access token');
-  }
-});
-*/
-
 // /tickets/:id
 getSingleTicketRoute(app);
 
