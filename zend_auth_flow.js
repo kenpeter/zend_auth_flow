@@ -12,6 +12,7 @@ const redirect_uri = config.redirect_uri;
 const request = require('request');
 const mylib = require('./lib/lib');
 
+const getSingleTicketRoute = require('./routes/get_single_ticket_route');
 const cleanCookieRoute = require('./routes/clean_cookie_route');
 const handleUserDecisionRoute = require('./routes/handle_user_decision_route');
 
@@ -84,6 +85,7 @@ app.get('/', async function(req, res) {
 
 });
 
+/*
 app.get('/tickets/:id', async function(req, res) {
   if(req.cookies.access_token != undefined) {
     console.log('-- get single ticket --');
@@ -115,9 +117,12 @@ app.get('/tickets/:id', async function(req, res) {
   }
   else {
     console.log('no access token');
-
   }
 });
+*/
+
+// /tickets/:id
+getSingleTicketRoute(app);
 
 // /handle_user_decision
 handleUserDecisionRoute(app);
