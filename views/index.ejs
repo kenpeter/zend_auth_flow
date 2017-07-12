@@ -13,19 +13,19 @@
         <h3>Mobile ticket viewer</h3>
 
         <%
-          let prev_page = parseInt(page) - 1;
-          if(prev_page <= 0) {
-            prev_page = 1;
+          let prevPage = parseInt(page) - 1;
+          if(prevPage <= 0) {
+            prevPage = 1;
           }
           else {
 
           }
         %>
         <%
-          let next_page = parseInt(page) + 1;
+          let nextPage = parseInt(page) + 1;
 
-          if(next_page >= total_page) {
-            next_page = total_page;
+          if(nextPage >= totalPage) {
+            nextPage = totalPage;
           }
           else {
 
@@ -48,8 +48,8 @@
         </table>
 
         <p>
-          <span><%= `${total_ticket_num} tickets in total` %>, <%= `${per_page} in this page` %></span><br/>
-          <a href=<%=`/?page=${prev_page}`%> >Prev</a> | <a href=<%=`/?page=${next_page}`%> >next</a>
+          <span><%= `${totalTicketNum} tickets in total` %>, <%= `${perPage} in this page` %></span><br/>
+          <a href=<%=`/?page=${prevPage}`%> >Prev</a> | <a href=<%=`/?page=${nextPage}`%> >next</a>
         </p>
       </div>
     </main>

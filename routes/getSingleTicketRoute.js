@@ -15,9 +15,9 @@ module.exports = function (app) {
   // if we forget async, await mylib will complain Unexpected identifier
   route.get('/:id', async (req, res) => {
     //
-    if (req.cookies.access_token !== undefined) {
+    if (req.cookies.accessToken !== undefined) {
       console.log('-- get single ticket --');
-      const accessToken = req.cookies.access_token;
+      const accessToken = req.cookies.accessToken;
 
       const ticketId = req.params.id;
       let singleTicket = '';
@@ -35,7 +35,7 @@ module.exports = function (app) {
         return;
       }
 
-      res.render('single_ticket', { singleTicket });
+      res.render('singleTicket', { singleTicket });
     } else {
       console.log('get single ticket, no access token');
     }

@@ -24,15 +24,15 @@ module.exports = function (app) {
       console.log('-- access code --');
       console.log(code);
 
-      const getTokenUrl = `${config.my_zend_root_url}/oauth/tokens`;
+      const getTokenUrl = `${config.myZendRootUrl}/oauth/tokens`;
 
       // Need to post and get token
       const jsonDataObj = {
         grant_type: 'authorization_code',
         code,
-        client_id: config.client_id,
-        client_secret: config.client_secret,
-        redirect_uri: config.redirect_uri,
+        client_id: config.clientId,
+        client_secret: config.clientSecret,
+        redirect_uri: config.redirectUri,
         scope: 'read'
       };
 

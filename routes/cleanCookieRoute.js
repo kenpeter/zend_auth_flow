@@ -8,7 +8,7 @@ module.exports = function (app) {
   const route = express.Router();
 
   // now define 1st level
-  app.use('/clean_cookie', route);
+  app.use('/cleanCookie', route);
 
   // /clean_cookie/
   route.get('/', (req, res) => {

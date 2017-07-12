@@ -1,51 +1,50 @@
 const config = require('./config');
+
 const express = require('express');
+
+const path = require('path');
+
 const app = express();
+
 const cookieParser = require('cookie-parser');
 
 const port = config.port;
-const querystring = require('querystring');
-const my_zend_root_url = config.my_zend_root_url;
-const client_id = config.client_id;
 
-const redirect_uri = config.redirect_uri;
-const request = require('request');
+const myZendRootUrl = config.myZendRootUrl;
+
+const clientId = config.clientId;
+
 const mylib = require('./lib/lib');
 
-const getSingleTicketRoute = require('./routes/get_single_ticket_route');
-const cleanCookieRoute = require('./routes/clean_cookie_route');
-const handleUserDecisionRoute = require('./routes/handle_user_decision_route');
+const getSingleTicketRoute = require('./routes/getSingleTicketRoute');
+const cleanCookieRoute = require('./routes/cleanCookieRoute');
+const handleUserDecisionRoute = require('./routes/handleUserDecisionRoute');
 
 app.set('view engine', 'ejs');
 app.use(cookieParser());
-app.use(express.static(__dirname + '/public'));
+app.use(express.static(path.join(__dirname, '/public')));
 
 
 // create routes
 // remember to put async here
-app.get('/', async function(req, res) {
+app.get('/', async (req, res) => {
   // req for read cookie, res for write cookie
-  if(req.cookies.access_token != undefined) {
+  if (req.cookies.accessToken !== undefined) {
     console.log('-- at home page and has access token --');
-    const access_token = req.cookies.access_token;
+    const accessToken = req.cookies.accessToken;
 
     // check
     let page = req.query.page;
-    if(page) {
-
-    }
-    else {
-      // default first page
+    if (page === undefined) {
       page = 1;
     }
-    console.log("curr page: " + page);
+    console.log(`curr page: ${page}`);
 
     // note, if you define a var inside try catch block, it won't be visible to the rest.
     let tickets = '';
     try {
-      tickets = await mylib.getPagedTickets(access_token, config.per_page, page);
-    }
-    catch(e) {
+      tickets = await mylib.getPagedTickets(accessToken, config.perPage, page);
+    } catch (e) {
       console.log('-- catch error --');
       console.log(e);
 
@@ -57,32 +56,26 @@ app.get('/', async function(req, res) {
     }
 
     // We don't do a try catch block here, as the try catch block above already done the job.
-    // need to get total page each time, as we don't know whether someone will add more tickets for you.
-    let total_ticket_num = await mylib.getTotalTicketNum(access_token);
+    const totalTicketNum = await mylib.getTotalTicketNum(accessToken);
 
     // when using in ejs, we don't do allTickets.allTickets
     // we use allTickets straight away.
-    let total_page = Math.ceil(total_ticket_num / config.per_page);
+    const totalPage = Math.ceil(totalTicketNum / config.perPage);
     res.render('index', {
-      tickets: tickets,
-      total_ticket_num: total_ticket_num,
-      per_page: config.per_page,
-      page: page,
-      total_page: total_page
+      tickets,
+      totalTicketNum,
+      perPage: config.perPage,
+      page,
+      totalPage
     });
-  }
-  else {
+  } else {
     console.log('no access token');
     //
-    const read_write = encodeURIComponent('read write');
-    // we don't speicify redirect uri here, as we already have it in zendesk interface
-    // go to get new token page
-    // if we already ask new token before and token still valid, we will go straight to redirect
-    // otherwise it will go to authorization enable page
-    const auth_new = `${my_zend_root_url}/oauth/authorizations/new?response_type=code&client_id=${client_id}&scope=${read_write}`;
-    res.redirect(auth_new);
+    const readWrite = encodeURIComponent('read write');
+    //
+    const authNew = `${myZendRootUrl}/oauth/authorizations/new?response_type=code&client_id=${clientId}&scope=${readWrite}`;
+    res.redirect(authNew);
   }
-
 });
 
 // /tickets/:id
@@ -96,7 +89,7 @@ cleanCookieRoute(app);
 
 
 // tell the application to listen on port 3000
-const server = app.listen(port, function(){
+const server = app.listen(port, () => {
   console.log(`listening to port: ${port}`);
 });
 
