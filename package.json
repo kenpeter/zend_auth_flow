@@ -3,6 +3,7 @@
     "chai": "^4.0.2",
     "cookie-parser": "^1.4.3",
     "ejs": "^2.5.6",
+    "eslint-config-rallycoding": "^3.2.0",
     "express": "^4.15.3",
     "proxyquire": "^1.8.0",
     "request": "^2.81.0",
