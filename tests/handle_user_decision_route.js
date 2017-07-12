@@ -14,7 +14,7 @@ var expect = require('chai').expect;
 var express = require('express');
 
 // ping url
-describe('Test handleUserDecisionRoute: ', function () {
+describe('Test: handleUserDecisionRoute', function () {
   var app;
   var request
   var route;
