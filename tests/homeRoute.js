@@ -9,8 +9,10 @@ const should = require('should');
 // express lib
 const express = require('express');
 
+const mylib = require('../lib/lib');
+
 // ping url
-describe('Test: handleUserDecisionRoute', () => {
+describe('Test: homeRoute', () => {
   let app;
   let request;
   let route;
@@ -22,8 +24,7 @@ describe('Test: handleUserDecisionRoute', () => {
     // need to set ejs
     app.set('view engine', 'ejs');
     //
-    route = proxyquire('../routes/handleUserDecisionRoute', {});
-
+    route = proxyquire('../routes/homeRoute', {});
     // the route needs express
     route(app);
 
@@ -31,18 +32,10 @@ describe('Test: handleUserDecisionRoute', () => {
     request = supertest(app);
   });
 
-  // callback func, no name, pass done
-  it('should show the error page, as we do not have the token access code.', (done) => {
-    // request with app
-    request
-      // path
-      .get('/handleUserDecision')
-      //
-      .end((err, res) => {
-        // so we need to install should.js, then res.text.should != undefined
-        // otherwise res.text.should will be undefined.
-        res.text.should.match(/Has no/);
-        done();
-      });
+  // We have to use function here, as we need 'this' keyword
+  it('should show the home page', async function () {
+    this.timeout(10000);
+
+    const accessToken = await mylib.getNewToken();
   });
 });

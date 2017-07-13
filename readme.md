@@ -95,6 +95,11 @@ In this project directory, ```node zend_auth_flow.js``` to launch the app. The s
 
 Now run the test: ```yarn test``` or ```npm test```
 
+
+## Limitation
+
+This projects use eslint to lint the source code. Eslint is not able to support async/await well. At the time, if you use atom or other similar editors, and you use eslint with your editor. You will constantly get error notification. Please ignore those errors, as the code still run. 
+
 ## Ref
 * https://help.zendesk.com/hc/en-us/articles/229488968
 * https://www.codementor.io/noddy/cookie-management-in-express-js-du107rmna

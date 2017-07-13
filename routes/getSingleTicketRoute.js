@@ -3,6 +3,10 @@
 const express = require('express');
 const mylib = require('../lib/lib');
 
+// Have to use var here, as we need to use proxyquire in test.
+var accessToken = '';
+var ticketId = '';
+
 // receive express app
 module.exports = function (app) {
   // force router coming out of express.
@@ -17,9 +21,8 @@ module.exports = function (app) {
     //
     if (req.cookies.accessToken !== undefined) {
       console.log('-- get single ticket --');
-      const accessToken = req.cookies.accessToken;
-
-      const ticketId = req.params.id;
+      accessToken = req.cookies.accessToken;
+      ticketId = req.params.id;
       let singleTicket = '';
 
       try {
