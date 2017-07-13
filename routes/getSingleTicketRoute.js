@@ -21,7 +21,7 @@ module.exports = function (app) {
     let errMsg = '';
 
     // Cookie has access token
-    if(req.cookies !== undefined) {
+    if (req.cookies !== undefined) {
       if (req.cookies.accessToken !== undefined) {
         // Now get token and get ticket id
         console.log('-- get single ticket --');
