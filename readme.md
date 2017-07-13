@@ -90,7 +90,7 @@ Please use the following dummy detail to login, to gain access to the api.
 
 ```password: Kenpeter4444!```
 
-[alt img](https://github.com/kenpeter/zend_auth_flow/raw/master/misc/login.png)
+![alt img](https://github.com/kenpeter/zend_auth_flow/raw/master/misc/login.png)
 
 After you press the submit button, you will be redirected back to the app's home page. You should be able to see list of tickets.
 
