@@ -1,17 +1,17 @@
-// need express
-// not instace
+// express
 const express = require('express');
 
-// receive express app
+// We pass the express instance into it.
 module.exports = function (app) {
-  // force router coming out of express.
+  // Force router coming out of express.
   const route = express.Router();
 
-  // now define 1st level
+  // Now define 1st level
   app.use('/cleanCookie', route);
 
   // /clean_cookie/
   route.get('/', (req, res) => {
+    // Clean cookie and output json obj to webpage.
     console.log('-- clean accessToken in cookie --');
     res.clearCookie('accessToken');
     res.send({ clean_token: true });

@@ -16,14 +16,22 @@ const cookieParser = require('cookie-parser');
 // Server listens to this port.
 const port = config.port;
 
+// Home url
 const homeRoute = require('./routes/homeRoute');
+// Single ticket url
 const getSingleTicketRoute = require('./routes/getSingleTicketRoute');
+// Clean cookie utility url
 const cleanCookieRoute = require('./routes/cleanCookieRoute');
+// Handle user decision url
 const handleUserDecisionRoute = require('./routes/handleUserDecisionRoute');
+// Get new token utility url
 const getNewToken = require('./routes/getNewToken');
 
+// The view template engine
 app.set('view engine', 'ejs');
+// Able to use cookie
 app.use(cookieParser());
+// Able to serve css, etc
 app.use(express.static(path.join(__dirname, '/public')));
 
 // /
