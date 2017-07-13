@@ -90,6 +90,8 @@ Please use the following dummy detail to login, to gain access to the api.
 
 ```password: Kenpeter4444!```
 
+[img](https://github.com/kenpeter/zend_auth_flow/raw/master/misc/login.png)
+
 After you press the submit button, you will be redirected back to the app's home page. You should be able to see list of tickets.
 
 You can also decline it, by pressing the 'Cancel' button on the login form. I found that, at the time, when I press the 'Cancel' button, Zendesk does not redirect myself back to my app. So......... I think you better not to decline it. :)
@@ -119,12 +121,12 @@ Now run the test: ```yarn test``` or ```npm test```
 
 
 ## Comments
-Extensive comments are provided, so even you don't know much about Nodejs. It should help part of it. It is also a good chance to learn some Nodejs. :)
+Extensive comments are provided, so even you don't know much about Nodejs. It should help to understand part of it. It is also a good chance to learn some Nodejs. :)
 
 
 ## Limitation
 
-This projects use eslint to lint the source code. Eslint is not able to support async/await well. At the time, if you use atom or other similar editors, and you use eslint with your editor. You will constantly get error notification. Please ignore those errors, as the code still run.
+This projects use eslint to lint the source code. Eslint is not able to support async/await well. At the time, if you use atom or other similar editors, and you use eslint with your editor. You will constantly get an error notification. Please ignore those errors, as the code still run.
 
 ## Ref
 * https://help.zendesk.com/hc/en-us/articles/229488968
