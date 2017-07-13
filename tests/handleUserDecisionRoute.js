@@ -41,6 +41,8 @@ describe('Test: handleUserDecisionRoute', () => {
       .end((err, res) => {
         // so we need to install should.js, then res.text.should != undefined
         // otherwise res.text.should will be undefined.
+
+        // If the user decline inputing username and password, it should land on this page.
         res.text.should.match(/Has no/);
         done();
       });

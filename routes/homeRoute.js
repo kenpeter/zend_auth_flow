@@ -44,9 +44,10 @@ module.exports = function (app) {
       // We don't do a try catch block here, as the try catch block above already done the job.
       const totalTicketNum = await mylib.getTotalTicketNum(accessToken);
 
-      // when using in ejs, we don't do allTickets.allTickets
-      // we use allTickets straight away.
+      // We work out how many pages of tickets we have.
       const totalPage = Math.ceil(totalTicketNum / config.perPage);
+
+      // Render and pass var into it.
       res.render('index', {
         tickets,
         totalTicketNum,
@@ -55,6 +56,7 @@ module.exports = function (app) {
         totalPage
       });
     } else {
+      // No access token at all, redirect to Zendesk api end point and get one.
       console.log('home route, no access token');
       //
       const readWrite = encodeURIComponent('read write');

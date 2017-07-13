@@ -37,5 +37,7 @@ describe('Test: homeRoute', () => {
     this.timeout(10000);
 
     const accessToken = await mylib.getNewToken();
+
+    // NOTE: Not able to test the home route yet, as we need to set the access token in a cookie.
   });
 });

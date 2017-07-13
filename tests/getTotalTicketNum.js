@@ -11,6 +11,7 @@ describe('Get total ticket num: ', function () {
     const accessToken = await mylib.getNewToken();
     const ticketNum = await mylib.getTotalTicketNum(accessToken);
 
+    // If we have the same amount of ticket num, we say pass.
     const msg = `It should have total ticket number: ${hardcodeTicketNum}`;
     assert.equal(ticketNum, hardcodeTicketNum, msg);
   });
