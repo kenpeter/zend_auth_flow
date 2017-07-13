@@ -12,8 +12,8 @@ module.exports = function (app) {
 
   // /clean_cookie/
   route.get('/', (req, res) => {
-    console.log('-- clean access_token in cookie --');
-    res.clearCookie('access_token');
+    console.log('-- clean accessToken in cookie --');
+    res.clearCookie('accessToken');
     res.send({ clean_token: true });
   });
 };

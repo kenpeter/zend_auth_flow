@@ -35,7 +35,7 @@ module.exports = function (app) {
         console.log(e);
 
         // clean token
-        res.clearCookie('access_token');
+        res.clearCookie('accessToken');
         res.redirect('/');
         // need to stop this route immediately.
         return;

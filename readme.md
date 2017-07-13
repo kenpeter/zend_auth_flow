@@ -66,23 +66,37 @@ then
 load ```http://localhost:8015``` in browser. Why port 8015? Because I have other apps running from port 8000.
 
 
-## How this app work?
+## How does this little app work?
 
 
-## Authentication
+### Short version:
+getAccessCode -> GetAccessToken -> doHttpRequest with the token
 
-When launching the site: http://localhost:8015, sometimes the token is already expired, you will
-be redirected to a page like the following url:
+### Long version:
+When someone load http://localhost:8015 in browser, this app will check whether you have a cookie. (This cookie stores your access token from Zendesk).
 
+#### When you don't have a token
+If you do not have access token, it will redirect to a Zendesk login page. The URL may look like this:
+
+~~~~
 https://kenpeter4444.zendesk.com/access/unauthenticated?client_id=zend_auth_flow&return_to=https%3A%2F%2Fkenpeter4444.zendesk.com%2Foauth%2Fauthorizations%2Fnew%3Fresponse_type%3Dcode%26client_id%3Dzend_auth_flow%26scope%3Dread%2520write
+~~~~
 
-where you have a chance to input your username and passowrd.
+where you have a chance to input username and password
 
-Use the following dummy detail to login:
+Please use the following dummy detail to login, to gain access to the api.
 
 ```username: figo2478@gmail.com```
 
 ```password: Kenpeter4444!```
+
+After you press the submit button, you will be redirected back to the app's home page. You should be able to see list of tickets.
+
+You can also decline it, by pressing the 'Cancel' button on the login form. I found that, at the time, when I press the 'Cancel' button, Zendesk does not redirect myself back to my app. So......... I think you better not to decline it. :)
+
+
+###$ When you have a token
+If you have the access token, it will try to get the first 25 tickets from Zendesk api and display it. During fetching this 25 tickets, if there is an error, it will clean the existing token in cookie and redirect back to the home page. The app will try to get access code, then get access token, then list tickets.
 
 
 ## Routes
@@ -100,7 +114,6 @@ Use the following dummy detail to login:
 This little app must be running first, then we run all the tests.
 
 In this project directory, ```node zend_auth_flow.js``` to launch the app. The server is listening to port 8015. So you can access this little app via http://localhost:8015
-
 
 Now run the test: ```yarn test``` or ```npm test```
 

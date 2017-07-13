@@ -10,9 +10,10 @@ const path = require('path');
 // Server instance
 const app = express();
 
-// 
+// Allow backend server to use cookie
 const cookieParser = require('cookie-parser');
 
+// Server listens to this port.
 const port = config.port;
 
 const homeRoute = require('./routes/homeRoute');
