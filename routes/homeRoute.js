@@ -60,7 +60,7 @@ module.exports = function (app) {
       const readWrite = encodeURIComponent('read write');
       const clientId = config.clientId;
       //
-      const authNew = `${myZendRootUrl}/oauth/authorizations/new?response_type=code&client_id=${clientId}&scope=${readWrite}`;
+      const authNew = `${config.myZendRootUrl}/oauth/authorizations/new?response_type=code&client_id=${clientId}&scope=${readWrite}`;
       res.redirect(authNew);
     }
   });

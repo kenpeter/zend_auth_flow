@@ -66,6 +66,8 @@ then
 load ```http://localhost:8015``` in browser. Why port 8015? Because I have other apps running from port 8000.
 
 
+## How this app work?
+
 
 ## Authentication
 
@@ -85,6 +87,13 @@ Use the following dummy detail to login:
 
 ## Routes
 
+* http://localhost:8015/cleanCookie. This route clean the cookie within the app. It is very useful for testing. As the app needs to retrieve token from Zendesk api first.
+
+* http://localhost:8015/. This is the home route. It lists 25 tickets and allow you to navigate back and forth.
+
+* http://localhost:8015/tickets/:id. This is the individual ticket route.
+
+* http://localhost:8015/handleUserDecision. When user authorise or decline api access to zendesk, a token will be appended to this URL or error message is appended if declined.
 
 
 ## Test
@@ -98,7 +107,7 @@ Now run the test: ```yarn test``` or ```npm test```
 
 ## Limitation
 
-This projects use eslint to lint the source code. Eslint is not able to support async/await well. At the time, if you use atom or other similar editors, and you use eslint with your editor. You will constantly get error notification. Please ignore those errors, as the code still run. 
+This projects use eslint to lint the source code. Eslint is not able to support async/await well. At the time, if you use atom or other similar editors, and you use eslint with your editor. You will constantly get error notification. Please ignore those errors, as the code still run.
 
 ## Ref
 * https://help.zendesk.com/hc/en-us/articles/229488968
