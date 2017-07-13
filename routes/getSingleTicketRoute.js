@@ -18,34 +18,45 @@ module.exports = function (app) {
   // /tickets/:id
   // If we forget async keyword, await mylib will complain Unexpected identifier
   route.get('/:id', async (req, res) => {
+    let errMsg = '';
+
     // Cookie has access token
-    if (req.cookies.accessToken !== undefined) {
-      // Now get token and get ticket id
-      console.log('-- get single ticket --');
-      accessToken = req.cookies.accessToken;
-      ticketId = req.params.id;
-      let singleTicket = '';
+    if(req.cookies !== undefined) {
+      if (req.cookies.accessToken !== undefined) {
+        // Now get token and get ticket id
+        console.log('-- get single ticket --');
+        accessToken = req.cookies.accessToken;
+        ticketId = req.params.id;
+        let singleTicket = '';
 
-      try {
-        // With token and ticket id, get the ticket obj.
-        singleTicket = await mylib.getSingleTicket(accessToken, ticketId);
-      } catch (e) {
-        console.log('-- catch error --');
-        console.log(e);
+        try {
+          // With token and ticket id, get the ticket obj.
+          singleTicket = await mylib.getSingleTicket(accessToken, ticketId);
+        } catch (e) {
+          console.log('-- catch error --');
+          console.log(e);
 
-        // Error, then we need to clean up the cookie and back to home page
-        // Home page will init this step: getAccessCode -> GetAccessToken -> ListTickets
-        res.clearCookie('accessToken');
-        res.redirect('/');
-        // need to stop this route immediately.
-        return;
+          // Error, then we need to clean up the cookie and back to home page
+          // Home page will init this step: getAccessCode -> GetAccessToken -> ListTickets
+          res.clearCookie('accessToken');
+          res.redirect('/');
+          // need to stop this route immediately.
+          return;
+        }
+
+        // Display a single ticket in html
+        res.render('singleTicket', { singleTicket });
+      } else {
+        // ....
+        errMsg = 'get single ticket, no access token';
+        console.log(errMsg);
+        res.render('errorPage', { errMsg });
       }
-
-      // Display a single ticket in html
-      res.render('singleTicket', { singleTicket });
     } else {
       // ....
-      console.log('get single ticket, no access token');
+      errMsg = 'get single ticket, no access token';
+      console.log(errMsg);
+      res.render('errorPage', { errMsg });
     }
   });
 };

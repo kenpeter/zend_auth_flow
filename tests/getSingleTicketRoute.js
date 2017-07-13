@@ -1,4 +1,3 @@
-/*
 // like require, but with overwrite
 const proxyquire = require('proxyquire');
 
@@ -10,16 +9,11 @@ const should = require('should');
 // express lib
 const express = require('express');
 
-//
-const mylib = require('../lib/lib');
-
-//
+// ping url
 describe('Test: getSingleTicketRoute', () => {
   let app;
   let request;
   let route;
-  let accessTokenStub = '';
-  let ticketIdStub = '';
 
   // before
   beforeEach(() => {
@@ -28,22 +22,29 @@ describe('Test: getSingleTicketRoute', () => {
     // need to set ejs
     app.set('view engine', 'ejs');
     //
-    route = proxyquire('../routes/getSingleTicketRoute', {
-      accessToken: accessTokenStub,
-      ticketId: ticketIdStub
-    });
+    route = proxyquire('../routes/getSingleTicketRoute', {});
+
+    // the route needs express
     route(app);
+
+    // why super test needs app as well...
+    request = supertest(app);
   });
 
   // callback func, no name, pass done
-  it('should get a single ticket', async function (done) {
-    this.timeout(10000);
+  it('should show the error page, as we do not have the token access code.', (done) => {
+    // request with app
+    request
+      // path
+      .get('/tickets/1')
+      //
+      .end((err, res) => {
+        // so we need to install should.js, then res.text.should != undefined
+        // otherwise res.text.should will be undefined.
 
-    const accessToken = await mylib.getNewToken();
-    accessTokenStub = accessToken;
-    ticketIdStub = 1;
-
-    route();
+        // If the user decline inputing username and password, it should land on this page.
+        res.text.should.match(/get single ticket/);
+        done();
+      });
   });
 });
-*/

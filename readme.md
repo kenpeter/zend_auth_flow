@@ -1,5 +1,5 @@
 ## Intro
-A little app uses some of the Zendesk API. Tested on node 8.1.3. It should be working on node 8+
+A ticket viewer which uses some of the Zendesk API. Tested on node 8.1.3. It should be working on node 8+
 
 ## Pre-install
 
