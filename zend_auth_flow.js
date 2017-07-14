@@ -20,8 +20,6 @@ const port = config.port;
 const homeRoute = require('./routes/homeRoute');
 // Single ticket url
 const getSingleTicketRoute = require('./routes/getSingleTicketRoute');
-// Clean cookie utility url
-const cleanCookieRoute = require('./routes/cleanCookieRoute');
 // Handle user decision url
 const handleUserDecisionRoute = require('./routes/handleUserDecisionRoute');
 // Get new token utility url

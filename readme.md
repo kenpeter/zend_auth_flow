@@ -103,8 +103,6 @@ If you have the access token, it will try to get the first 25 tickets from Zende
 
 ## Routes
 
-* http://localhost:8015/cleanCookie. This route clean the cookie within the app. It is very useful for testing. As the app needs to retrieve token from Zendesk api first.
-
 * http://localhost:8015/. This is the home route. It lists 25 tickets and allow you to navigate back and forth.
 
 * http://localhost:8015/tickets/:id. This is the individual ticket route.
