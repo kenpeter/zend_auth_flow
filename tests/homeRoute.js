@@ -12,7 +12,7 @@ const express = require('express');
 const mylib = require('../lib/lib');
 
 // ping url
-describe('Test: getSingleTicketRoute', () => {
+describe('Test: homeRoute', () => {
   let app;
   let request;
   let route;
@@ -24,7 +24,7 @@ describe('Test: getSingleTicketRoute', () => {
     // need to set ejs
     app.set('view engine', 'ejs');
     //
-    route = proxyquire('../routes/getSingleTicketRoute', {});
+    route = proxyquire('../routes/homeRoute', {});
 
     // the route needs express
     route(app);
@@ -33,17 +33,11 @@ describe('Test: getSingleTicketRoute', () => {
     request = supertest(app);
   });
 
-  it('should show the error page, as we do not have the token access code.', async function () {
-    this.timeout(10000);
-    const myres = await request.get('/tickets/1');
-    myres.text.should.match(/get single ticket/);
-  });
-
   //
-  it('should show ticket 1 content', async function () {
+  it('should show home page', async function () {
     this.timeout(10000);
     const myAccessToken = await mylib.getNewToken();
-    const myres = await request.get(`/tickets/1?myAccessToken=${myAccessToken}`);
-    myres.text.should.match(/Sample ticket/);
+    const myres = await request.get(`/?myAccessToken=${myAccessToken}`);
+    myres.text.should.match(/Mobile ticket viewer/);
   });
 });
