@@ -43,9 +43,6 @@ getSingleTicketRoute(app);
 // /handleUserDecision
 handleUserDecisionRoute(app);
 
-// /cleanCookie, it is a utility to clean cookie
-cleanCookieRoute(app);
-
 // /getNewToken, it is a utility to get a new token
 getNewToken(app);
 

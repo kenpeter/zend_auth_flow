@@ -2,12 +2,14 @@
 const proxyquire = require('proxyquire');
 
 // super test, like request
-const supertest = require('supertest');
+const supertest = require('supertest-as-promised');
 
 const should = require('should');
 
 // express lib
 const express = require('express');
+
+const mylib = require('../lib/lib');
 
 // ping url
 describe('Test: getSingleTicketRoute', () => {
@@ -32,19 +34,17 @@ describe('Test: getSingleTicketRoute', () => {
   });
 
   // callback func, no name, pass done
-  it('should show the error page, as we do not have the token access code.', (done) => {
-    // request with app
-    request
-      // path
-      .get('/tickets/1')
-      //
-      .end((err, res) => {
-        // so we need to install should.js, then res.text.should != undefined
-        // otherwise res.text.should will be undefined.
+  it('should show the error page, as we do not have the token access code.', async function () {
+    this.timeout(10000);
+    const myres = await request.get('/tickets/1');
+    myres.text.should.match(/get single ticket/);
+  });
 
-        // If the user decline inputing username and password, it should land on this page.
-        res.text.should.match(/get single ticket/);
-        done();
-      });
+  //
+  it('should show ticket 1 content', async function () {
+    this.timeout(10000);
+    const myAccessToken = await mylib.getNewToken();
+    const myres = await request.get(`/tickets/1?myAccessToken=${myAccessToken}`);
+    myres.text.should.match(/Sample ticket/);
   });
 });
