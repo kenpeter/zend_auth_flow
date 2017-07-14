@@ -4,7 +4,7 @@ A ticket viewer which uses some of the Zendesk API. Tested on node 8.1.3. It sho
 ## Pre-install
 
 ### Install nvm
-I personally use nvm to switch between versions of nodejs. You can find detail instruction here:  https://github.com/creationix/nvm
+I personally use nvm to switch versions of nodejs. You can find detail instruction here:  https://github.com/creationix/nvm
 
 Clone the nvm to your home directory.
 ~~~~
