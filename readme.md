@@ -142,3 +142,4 @@ This projects use eslint to lint the source code. Eslint is not able to support 
 * https://developer.zendesk.com/rest_api/docs/core/oauth_tokens
 * https://mochajs.org/#timeouts
 * https://www.youtube.com/watch?v=dEaUikT1-R0
+* https://medium.com/@bill_broughton/testing-with-authenticated-routes-in-express-6fa9c4c335ca

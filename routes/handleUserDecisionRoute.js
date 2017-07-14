@@ -53,13 +53,13 @@ module.exports = function (app) {
           // We have token
           if (accessToken) {
             // remember token
-            res.cookie('accessToken', accessToken);
+            // res.cookie('accessToken', accessToken);
 
             console.log('-- access token --');
             console.log(accessToken);
 
             // Rediect to listing ticket page, as we have access token
-            res.redirect('/');
+            res.redirect(`/?myAccessToken=${accessToken}`);
             console.log('-- redirect to home page --');
             return;
           }

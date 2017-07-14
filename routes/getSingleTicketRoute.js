@@ -21,31 +21,31 @@ module.exports = function (app) {
     let errMsg = '';
 
     // Cookie has access token
-    if (req.cookies !== undefined) {
-      if (req.cookies.accessToken !== undefined) {
+    if (req.query !== undefined) {
+      if (req.query.myAccessToken !== undefined) {
         // Now get token and get ticket id
         console.log('-- get single ticket --');
-        accessToken = req.cookies.accessToken;
+        const myAccessToken = req.query.myAccessToken;
         ticketId = req.params.id;
         let singleTicket = '';
 
         try {
           // With token and ticket id, get the ticket obj.
-          singleTicket = await mylib.getSingleTicket(accessToken, ticketId);
+          singleTicket = await mylib.getSingleTicket(myAccessToken, ticketId);
         } catch (e) {
           console.log('-- catch error --');
           console.log(e);
 
           // Error, then we need to clean up the cookie and back to home page
           // Home page will init this step: getAccessCode -> GetAccessToken -> ListTickets
-          res.clearCookie('accessToken');
-          res.redirect('/');
+          // res.clearCookie('accessToken');
+          res.redirect(`/?myAccessToken=${myAccessToken}`);
           // need to stop this route immediately.
           return;
         }
 
         // Display a single ticket in html
-        res.render('singleTicket', { singleTicket });
+        res.render('singleTicket', { singleTicket, myAccessToken });
       } else {
         // ....
         errMsg = 'get single ticket, no access token';

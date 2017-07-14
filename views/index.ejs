@@ -42,14 +42,14 @@
             <tr>
               <td><%= id %></td>
               <td><%= tickets[i].status %></td>
-              <td><a href="/tickets/<%= id %>"><%= tickets[i].subject %></a></td>
+              <td><a href="/tickets/<%= id %>?myAccessToken=<%= myAccessToken %>"><%= tickets[i].subject %></a></td>
             </tr>
           <% } %>
         </table>
 
         <p>
           <span><%= `${totalTicketNum} tickets in total` %>, <%= `${perPage} in this page` %></span><br/>
-          <a href=<%=`/?page=${prevPage}`%> >Prev</a> | <a href=<%=`/?page=${nextPage}`%> >next</a>
+          <a href=<%=`/?page=${prevPage}&myAccessToken=${myAccessToken}`%> >Prev</a> | <a href=<%=`/?page=${nextPage}&myAccessToken=${myAccessToken}`%> >next</a>
         </p>
       </div>
     </main>

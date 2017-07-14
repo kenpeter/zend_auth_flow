@@ -14,10 +14,9 @@ module.exports = function (app) {
 
   // /
   route.get('/', async (req, res) => {
-    // req for read cookie, res for write cookie
-    if (req.cookies.accessToken !== undefined) {
+    if (req.query.myAccessToken !== undefined) {
       console.log('-- at home page and has access token --');
-      const accessToken = req.cookies.accessToken;
+      const myAccessToken = req.query.myAccessToken;
 
       // check
       let page = req.query.page;
@@ -29,7 +28,7 @@ module.exports = function (app) {
       // note, if you define a var inside try catch block, it won't be visible to the rest.
       let tickets = '';
       try {
-        tickets = await mylib.getPagedTickets(accessToken, config.perPage, page);
+        tickets = await mylib.getPagedTickets(myAccessToken, config.perPage, page);
       } catch (e) {
         console.log('-- catch error --');
         console.log(e);
@@ -42,7 +41,7 @@ module.exports = function (app) {
       }
 
       // We don't do a try catch block here, as the try catch block above already done the job.
-      const totalTicketNum = await mylib.getTotalTicketNum(accessToken);
+      const totalTicketNum = await mylib.getTotalTicketNum(myAccessToken);
 
       // We work out how many pages of tickets we have.
       const totalPage = Math.ceil(totalTicketNum / config.perPage);
@@ -53,7 +52,8 @@ module.exports = function (app) {
         totalTicketNum,
         perPage: config.perPage,
         page,
-        totalPage
+        totalPage,
+        myAccessToken
       });
     } else {
       // No access token at all, redirect to Zendesk api end point and get one.
