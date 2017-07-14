@@ -126,6 +126,12 @@ Extensive comments are provided, so even you don't know much about Nodejs. It sh
 
 This projects use eslint to lint the source code. Eslint is not able to support async/await well. At the time, if you use atom or other similar editors, and you use eslint with your editor. You will constantly get an error notification. Please ignore those errors, as the code still run.
 
+Originally, I store access token in cookie. Later when I start to write test cases. I found that it is difficult to test route that requires access token.
+
+e.g. If we test individual route like ````http://localhost:8015/tickets/1````, we need to somehow modify the internal variable which store the access token. I tested ````proxyquire```` and ````rewire```` npm package. It is just not possible. (At least I don't know how to)
+
+So I decide append the access token in url and I can access it easily in testing.
+
 ## Ref
 * https://help.zendesk.com/hc/en-us/articles/229488968
 * https://www.codementor.io/noddy/cookie-management-in-express-js-du107rmna
