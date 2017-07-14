@@ -130,7 +130,7 @@ Originally, I store access token in cookie. Later when I start to write test cas
 
 e.g. If we test individual route like ````http://localhost:8015/tickets/1````, we need to somehow modify the internal variable which store the access token. I tested ````proxyquire```` and ````rewire```` npm package. It is just not possible. (At least I don't know how to)
 
-So I decide append the access token in url and I can access it easily in testing.
+So I decide to append the access token in url and I can access it easily in testing.
 
 ## Ref
 * https://help.zendesk.com/hc/en-us/articles/229488968
