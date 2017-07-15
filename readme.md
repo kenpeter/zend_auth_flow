@@ -73,7 +73,7 @@ load ```http://localhost:8015``` in browser. Why port 8015? Because I have other
 getAccessCode -> GetAccessToken -> doHttpRequest with the token
 
 ### Long version:
-When someone load http://localhost:8015 in browser, this app will check whether you have a cookie. (This cookie stores your access token from Zendesk).
+When someone load http://localhost:8015 in browser, this app will check whether you have a access token.
 
 #### When you don't have a token
 If you do not have access token, it will redirect to a Zendesk login page. The URL may look like this:
@@ -94,7 +94,7 @@ Please use the following dummy detail to login, to gain access to the api.
 
 After you press the submit button, you will be redirected back to the app's home page. You should be able to see list of tickets.
 
-You can also decline it, by pressing the 'Cancel' button on the login form. I found that, at the time, when I press the 'Cancel' button, Zendesk does not redirect myself back to my app. So......... I think you better not to decline it. :)
+You can also decline it, by pressing the 'Cancel' button on the login form. I found that, at the time, when I pressed the 'Cancel' button, Zendesk does not redirect myself back to my app. So......... I think you better not to decline it. :)
 
 
 ### When you have a token
@@ -124,13 +124,19 @@ Extensive comments are provided, so even you don't know much about Nodejs. It sh
 
 ## Limitation
 
+
+### Limit 1
 This projects use eslint to lint the source code. Eslint is not able to support async/await well. At the time, if you use atom or other similar editors, and you use eslint with your editor. You will constantly get an error notification. Please ignore those errors, as the code still run.
 
-Originally, I store access token in cookie. Later when I start to write test cases. I found that it is difficult to test route that requires access token.
+### Limit 2
+Originally, I stored access token in cookie. Later when I start to write test cases. I found that it is difficult to test route that requires access token.
 
 e.g. If we test individual route like ````http://localhost:8015/tickets/1````, we need to somehow modify the internal variable which store the access token. I tested ````proxyquire```` and ````rewire```` npm package. It is just not possible. (At least I don't know how to)
 
-So I decide to append the access token in url and I can access it easily in testing.
+So I decide to append the access token in URL and I can access it easily in testing.
+
+### Limit 3
+One of the test case, getTotalTicketNum.js. I hard coded total number = 103. This allows me to easily to test the functionality of retrieving total ticket number. 
 
 ## Ref
 * https://help.zendesk.com/hc/en-us/articles/229488968
