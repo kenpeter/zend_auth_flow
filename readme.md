@@ -109,6 +109,8 @@ If you have the access token, it will try to get the first 25 tickets from Zende
 
 * http://localhost:8015/handleUserDecision. When user authorise or decline api access to zendesk, a token will be appended to this URL or error message is appended if declined.
 
+* http://localhost:8015/getNewToken. Allow you to get a new token for easy testing.
+
 
 ## Test
 This little app must be running first, then we run all the tests.
@@ -136,7 +138,7 @@ e.g. If we test individual route like ````http://localhost:8015/tickets/1````, w
 So I decide to append the access token in URL and I can access it easily in testing.
 
 ### Limit 3
-One of the test case, getTotalTicketNum.js. I hard coded total number = 103. This allows me to easily to test the functionality of retrieving total ticket number. 
+One of the test case, getTotalTicketNum.js. I hard coded total number = 103. This allows me to easily to test the functionality of retrieving total ticket number.
 
 ## Ref
 * https://help.zendesk.com/hc/en-us/articles/229488968
