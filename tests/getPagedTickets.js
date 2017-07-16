@@ -7,10 +7,10 @@ const config = require('../config');
 
 // Somehow we cannot use arrow function here.
 // because we are using 'this' keyword.
-describe('Get paged tickets: ', function () {
+describe('Test ==== get paged tickets ', function () {
   it(`returns ${config.perPage} tickets`, async function () {
     // Async calls take time, so we need to put more time here.
-    this.timeout(10000);
+    this.timeout(15000);
     // Params
     const accessToken = await mylib.getNewToken();
     const page = 1;

@@ -3,7 +3,7 @@ const mylib = require('../lib/lib');
 
 // somehow we cannot use arrow function here.
 // because we are using 'this' keyword.
-describe('Get total ticket num: ', function () {
+describe('Test ==== get total ticket num ', function () {
   it('returns total number of ticket', async function () {
     this.timeout(10000);
     // NOTE: Need to hardcode for this, will find a better way to do it.

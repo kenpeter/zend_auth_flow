@@ -12,7 +12,7 @@ const express = require('express');
 const mylib = require('../lib/lib');
 
 // ping url
-describe('Test: homeRoute', () => {
+describe('Test ==== homeRoute ', () => {
   let app;
   let request;
   let route;

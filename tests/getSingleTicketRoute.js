@@ -12,7 +12,7 @@ const express = require('express');
 const mylib = require('../lib/lib');
 
 // ping url
-describe('Test: getSingleTicketRoute', () => {
+describe('Test ==== getSingleTicketRoute ', () => {
   let app;
   let request;
   let route;
@@ -44,11 +44,25 @@ describe('Test: getSingleTicketRoute', () => {
     myres.text.should.match(/no access token/);
   });
 
-  
+  //
+  it('should show the error page, ticket id is not a positive number', async function () {
+    this.timeout(10000);
+    const myAccessToken = await mylib.getNewToken();
+    const myres = await request.get(`/tickets/xyz?myAccessToken=${myAccessToken}`);
+    myres.text.should.match(/Not a positive number/);
+  });
+
+  //
+  it('should show the error page, ticket id is not in range', async function () {
+    this.timeout(10000);
+    const myAccessToken = await mylib.getNewToken();
+    const myres = await request.get(`/tickets/9999?myAccessToken=${myAccessToken}`);
+    myres.text.should.match(/Ticket id not in range/);
+  });
 
   //
   it('should show ticket 1 content', async function () {
-    this.timeout(10000);
+    this.timeout(18000);
     const myAccessToken = await mylib.getNewToken();
     const myres = await request.get(`/tickets/1?myAccessToken=${myAccessToken}`);
     myres.text.should.match(/Sample ticket/);
