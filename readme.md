@@ -157,3 +157,5 @@ One of the test case, getTotalTicketNum.js. I hard coded total number = 103. Thi
 * https://mochajs.org/#timeouts
 * https://www.youtube.com/watch?v=dEaUikT1-R0
 * https://medium.com/@bill_broughton/testing-with-authenticated-routes-in-express-6fa9c4c335ca
+
+* https://stackoverflow.com/questions/10834796/validate-that-a-string-is-a-positive-integer

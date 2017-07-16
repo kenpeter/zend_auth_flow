@@ -25,9 +25,27 @@ module.exports = function (app) {
       if (req.query.myAccessToken !== undefined) {
         // Now get token and get ticket id
         console.log('-- get single ticket --');
+
         const myAccessToken = req.query.myAccessToken;
         ticketId = req.params.id;
+        const totalTicketNum = await mylib.getTotalTicketNum(myAccessToken);
         let singleTicket = '';
+
+        // ticketId must be positive integer
+        if (!mylib.isNormalInteger(ticketId)) {
+          errMsg = `Not a positive number: ${ticketId}`;
+          console.log(errMsg);
+          res.render('errorPage', { errMsg });
+          return;
+        }
+
+        // ticketId must in range.
+        if (ticketId > totalTicketNum || ticketId < 0) {
+          errMsg = `Ticket id not in range: ${ticketId}`;
+          console.log(errMsg);
+          res.render('errorPage', { errMsg });
+          return;
+        }
 
         try {
           // With token and ticket id, get the ticket obj.
@@ -36,9 +54,6 @@ module.exports = function (app) {
           console.log('-- catch error --');
           console.log(e);
 
-          // Error, then we need to clean up the cookie and back to home page
-          // Home page will init this step: getAccessCode -> GetAccessToken -> ListTickets
-          // res.clearCookie('accessToken');
           res.redirect(`/?myAccessToken=${myAccessToken}`);
           // need to stop this route immediately.
           return;
