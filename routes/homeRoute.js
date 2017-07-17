@@ -33,8 +33,6 @@ module.exports = function (app) {
         console.log('-- catch error --');
         console.log(e);
 
-        // clean token
-        res.clearCookie('accessToken');
         res.redirect('/');
         // need to stop this route immediately.
         return;
