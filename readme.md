@@ -143,7 +143,7 @@ So I decide to append the access token in URL and I can access it easily in test
 One of the test case, getTotalTicketNum.js. I hard coded total number = 103. This allows me to easily to test the functionality of retrieving total ticket number.
 
 ### Limit 4
-There is a [node-zendesk](https://github.com/blakmatrix/node-zendesk) library on Github. If I use that I am able to reduce lots of code and it will make my code base looks simpler. I pick the access token and API URL route and have a better understanding how the Zendesk API under the hook. The logic is in fact not that complicated and most importantly I learnt a ton. 
+There is a [node-zendesk](https://github.com/blakmatrix/node-zendesk) library on Github. If I use that I am able to reduce lots of code and it will make my code base looks simpler. I picked the access token and API URL implementation. Since then, I have a better understanding how the Zendesk API works under the hook. The logic is in fact simple. Most importantly I learnt a ton. 
 
 ## Ref
 * https://help.zendesk.com/hc/en-us/articles/229488968
