@@ -100,12 +100,12 @@ After you press the submit button, you will be redirected back to the app's home
 You can also decline it, by pressing the 'Cancel' button on the login form. I found that, at the time, when I pressed the 'Cancel' button, Zendesk does not redirect myself back to my app. So......... I think you better not to decline it. :)
 
 #### When you have a token
-If you have the access token, it will try to get the first 25 tickets from Zendesk api and display it. During fetching this 25 tickets, if there is an error, it will clean the existing token in cookie and redirect back to the home page. The app will try to get access code, then get access token, then list tickets.
-
+If you have the access token, it will try to get the first 25 tickets from Zendesk api and display it. During fetching this 25 tickets, if there is an error, it will redirect back to the home page. The app will try to get access code, then get access token, then list tickets.
 
 
 ![alt img](https://github.com/kenpeter/zend_auth_flow/raw/master/misc/zend_auth_flow_singleTicketRoute.png)
 
+For single ticket route, the diagram should be straight forward. I will skip the explanation here.
 
 
 ## Routes
