@@ -105,7 +105,7 @@ If you have the access token, it will try to get the first 25 tickets from Zende
 
 ![alt img](https://github.com/kenpeter/zend_auth_flow/raw/master/misc/zend_auth_flow_singleTicketRoute.png)
 
-For single ticket route, the diagram should be straight forward. I will skip the explanation here.
+For single ticket route, the flow should be straight forward. I will skip the explanation here.
 
 
 ## Routes
