@@ -68,13 +68,19 @@ load ```http://localhost:8015``` in browser. Why port 8015? Because I have other
 
 ## How does this little app work?
 
-![alt img](https://github.com/kenpeter/zend_auth_flow/raw/master/misc/zend_auth_flow_homeRoute.png)
-
-
 ### Short version:
 getAccessCode -> GetAccessToken -> doHttpRequest with the token
 
 Based on this [tutorial](https://help.zendesk.com/hc/en-us/articles/229488968)
+
+### Long version:
+![alt img](https://github.com/kenpeter/zend_auth_flow/raw/master/misc/zend_auth_flow_homeRoute.png)
+
+
+
+
+
+
 
 ### Long version:
 When someone load http://localhost:8015 in browser, this app will check whether you have a access token.
