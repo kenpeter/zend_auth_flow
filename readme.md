@@ -76,7 +76,7 @@ Based on this [tutorial](https://help.zendesk.com/hc/en-us/articles/229488968)
 ### Long version:
 ![alt img](https://github.com/kenpeter/zend_auth_flow/raw/master/misc/zend_auth_flow_homeRoute.png)
 
-
+![alt img](https://github.com/kenpeter/zend_auth_flow/raw/master/misc/zend_auth_flow_singleTicketRoute.png)
 
 
 
