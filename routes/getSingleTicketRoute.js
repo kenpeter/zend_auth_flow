@@ -20,7 +20,7 @@ module.exports = function (app) {
   route.get('/:id', async (req, res) => {
     let errMsg = '';
 
-    // Cookie has access token
+    //
     if (req.query !== undefined) {
       if (req.query.myAccessToken !== undefined) {
         // Now get token and get ticket id

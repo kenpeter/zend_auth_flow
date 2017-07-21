@@ -52,9 +52,6 @@ module.exports = function (app) {
 
           // We have token
           if (accessToken) {
-            // remember token
-            // res.cookie('accessToken', accessToken);
-
             console.log('-- access token --');
             console.log(accessToken);
 
