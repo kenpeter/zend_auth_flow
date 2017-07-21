@@ -5,8 +5,7 @@ const mylib = require('../lib/lib');
 // Sensitive info
 const config = require('../config');
 
-// Somehow we cannot use arrow function here.
-// because we are using 'this' keyword.
+// Get some of tickets.
 describe('Test ==== get paged tickets ', function () {
   it(`returns ${config.perPage} tickets`, async function () {
     // Async calls take time, so we need to put more time here.

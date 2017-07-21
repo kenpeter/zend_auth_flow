@@ -3,8 +3,7 @@ const assert = require('assert');
 //
 const mylib = require('../lib/lib');
 
-// somehow we cannot use arrow function here.
-// because we are using 'this' keyword.
+// Get a single ticket
 describe('Test ==== get a single ticket ', function () {
   it('returns a single ticket obj', async function () {
     // Again, need to extend the time for async

@@ -1,8 +1,7 @@
 const assert = require('assert');
 const mylib = require('../lib/lib');
 
-// somehow we cannot use arrow function here.
-// because we are using 'this' keyword.
+// Get total ticket num
 describe('Test ==== get total ticket num ', function () {
   it('returns total number of ticket', async function () {
     this.timeout(10000);
